@@ -1,0 +1,8 @@
+---
+- include: install.yml
+
+- include: postboot.yml
+  tags: postboot
+
+- include: test.yml
+  tags: test

@@ -1,0 +1,16 @@
+---
+- name: enable management plugin
+  rabbitmq_plugin:
+    name: rabbitmq_management
+    state: enabled
+
+- name: "Create admin user"
+  rabbitmq_user:
+    user: administrator
+    password: administrator
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+    tags: administrator

@@ -1,0 +1,26 @@
+---
+allow_duplicates: yes
+dependencies:
+  - role: jdauphant.nginx
+    nginx_http_params:
+      - "tcp_nodelay on"
+      - "error_log /var/log/nginx/error.log"
+      - "access_log /var/log/nginx/access.log"
+      - "client_max_body_size 0"
+    nginx_sites:
+      docker_app:
+        - listen 80
+        - server_name _
+        - location / {
+            proxy_pass http://app_server;
+          }
+    nginx_configs:
+      proxy:
+        - proxy_set_header X-Real-IP  $remote_addr
+        - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+        - proxy_redirect off
+        - proxy_set_header Host $http_host
+      upstream:
+        - upstream app_server {
+            server 127.0.0.1:15672 fail_timeout=0;
+          }
