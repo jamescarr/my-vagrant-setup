@@ -1,0 +1,4 @@
+.vagrant
+ansible/third-party-roles/
+ansible/vars/extra_vars.json
+ansible/.galaxylock

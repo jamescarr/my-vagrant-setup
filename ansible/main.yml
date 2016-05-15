@@ -1,0 +1,5 @@
+---
+- name: Generic Playbook
+  hosts: all
+  roles:
+    - role: "{{ provision_role }}"
