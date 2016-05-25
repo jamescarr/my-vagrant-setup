@@ -34,6 +34,11 @@ instances are running on ports, certain files exist, etc.
 To illustrate how this is used, let's do a quick example by configuring
 a server running rabbitmq proxied by nginx.
 
+### Requirements
+- vagrant 1.8.1
+
+And that's it... I think?
+
 ### Initial Setup
 We'll start by editing the nodes.yml and adding the role. We also
 specify an IP address that we can use to refer to the server both from
